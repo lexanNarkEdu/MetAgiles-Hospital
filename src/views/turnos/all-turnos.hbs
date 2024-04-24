@@ -1,0 +1,28 @@
+<div class="row">
+  {{#each turnos}}
+  <div class="col-md-3">
+    <div class="card">
+      <div class="card-body">
+        <p>Dia : {{ fecha }}</p>
+        <p>Hora : {{ hora }}</p>
+        <p>{{ description }} </p>
+        <!-- DELETE REQUEST -->
+        <form action="/turnos/delete/{{_id}}?_method=DELETE" method="POST">
+          <input type="hidden" name="_method" value="DELETE">
+          <button type="submit" class="btn btn-danger btn-block btn-sm">Delete</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- En caso que no halla notas -->
+  {{else}}
+  <div class="card mx-auto">
+    <div class="card-body">
+      <!-- Cuando tengas el usuario 
+      <h1>Hello {{user.name}}</h1>-->  
+      <p clsss="lead">There are not Notes yet.</p>
+      <a href="/turnos/add" class="btn btn-success btn-block">Create One!</a>
+    </div>
+  </div>
+  {{/each}}
+</div>
